@@ -21,16 +21,10 @@ def get_input_args():
     # Create Parse using ArgumentParser
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "data_directory", help="Given the directory of the trained data"
+        "data_directory", help="Path to the folder of images to train on"
     )
     parser.add_argument(
         "--gpu", action=argparse.BooleanOptionalAction, help="Apply GPU"
-    )
-    parser.add_argument(
-        "--dir",
-        type=str,
-        default="pet_images/",
-        help="path to folder of images",
     )
     parser.add_argument(
         "--arch",
@@ -55,6 +49,12 @@ def get_input_args():
         type=int,
         default=512,
         help="Hidden layer of the classifier ",
+    )
+    parser.add_argument(
+        "--epochs",
+        type=int,
+        default=5,
+        help="Number of epochs to train the model",
     )
     # Replace None with parser.parse_args() parsed argument collection that
     # you created with this function
