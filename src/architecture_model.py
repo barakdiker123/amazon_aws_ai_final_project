@@ -11,12 +11,9 @@ def get_classifier(hidden_units):
     classifier = nn.Sequential(
         OrderedDict(
             [
-                ("fc1", nn.Linear(1920, 2 * hidden_units)),
+                ("fc1", nn.Linear(1920, hidden_units)),
                 ("relu1", nn.ReLU()),
                 ("drop1", nn.Dropout(p=0.1)),
-                ("fc2", nn.Linear(2 * hidden_units, hidden_units)),
-                ("relu2", nn.ReLU()),
-                ("drop2", nn.Dropout(p=0.1)),
                 ("fc_final", nn.Linear(hidden_units, 102)),
                 ("output", nn.LogSoftmax(dim=1)),
             ]
