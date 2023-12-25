@@ -29,8 +29,8 @@ def get_input_args():
     parser.add_argument(
         "--arch",
         type=str,
-        default="vgg13",
-        help="Choose Feature model for example vgg",
+        default="densenet201",
+        help="Choose the from the list [densenet201]",
     )
     parser.add_argument(
         "--save_dir",
@@ -41,7 +41,7 @@ def get_input_args():
     parser.add_argument(
         "--learning_rate",
         type=float,
-        default=0.01,
+        default=0.001,
         help="The learning rate of the training classifier ",
     )
     parser.add_argument(

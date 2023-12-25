@@ -3,7 +3,7 @@ from collections import OrderedDict
 import torch.nn as nn
 
 
-def get_classifier(hidden_units):
+def get_classifier(hidden_units, num_input_layer):
     """
     Create the model architecture
     with 2 hidden layer of size hidden_units
@@ -11,7 +11,7 @@ def get_classifier(hidden_units):
     classifier = nn.Sequential(
         OrderedDict(
             [
-                ("fc1", nn.Linear(1920, hidden_units)),
+                ("fc1", nn.Linear(num_input_layer, hidden_units)),
                 ("relu1", nn.ReLU()),
                 ("drop1", nn.Dropout(p=0.1)),
                 ("fc_final", nn.Linear(hidden_units, 102)),

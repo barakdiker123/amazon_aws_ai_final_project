@@ -14,19 +14,15 @@ my_input = get_input_args()
 trainloader, testloader, train_data, _ = get_data_loader_trainer()
 
 # model = models.densenet121(weights=True)
-model = torchvision.models.densenet201(weights="DEFAULT")  # output 1920 neurons
-# weights="DenseNet121_Weights.IMAGENET1K_V1"
-# )  # "IMAGENET1K_V1")  # 1024 output layers !
-# model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
-
-# Turn off model parameters ( Of VGG ETC ..  )
-for param in model.parameters():
-    param.requires_grad = False
-
-classifier = get_classifier(my_input.hidden_units)
+match my_input.arch:
+    case "densenet201":
+        model = torchvision.models.densenet201(weights="DEFAULT")  # output 1920 neurons
+        classifier = get_classifier(my_input.hidden_units, 1920)
+        for param in model.parameters():
+            param.requires_grad = False
+        model.classifier = classifier
 
 
-model.classifier = classifier
 model.train()
 
 if my_input.gpu:
