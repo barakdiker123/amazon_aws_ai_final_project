@@ -4,6 +4,18 @@
 Here is the final project of AWS ML & AI 
 This project was written By Barak-Nadav Diker 
 
+before using the app please run the following command !! 
+
+``` sh
+cd src
+wget 'https://s3.amazonaws.com/content.udacity-data.com/nd089/flower_data.tar.gz'
+unlink flowers
+mkdir flowers && tar -xzf flower_data.tar.gz -C flowers
+```
+
+`
+
+
 ## How to run this program 
 
 For opening and running the jupyter notebook , simply do 
